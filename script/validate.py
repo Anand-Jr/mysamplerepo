@@ -27,7 +27,9 @@ class Activity():
                             break
             except Exception as e:
                 is_present = False
-
+                error=str(e)
+                test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})
+            
             test_object.update_pre_result(testcase_description,expected_result)
             if is_present==True:
                 test_object.update_result(1,expected_result,actual,"Congrats! You have done it right!"," ") 
