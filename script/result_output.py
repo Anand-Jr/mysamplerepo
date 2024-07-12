@@ -55,6 +55,9 @@ class ResultOutput:
 
         #self.testcases=testcase_list
         #logging.info("step 11")
+    
+    def update_eval_message(self,result):
+        self.eval_message.update(result)
 
     def update_pre_result(self,description="",expected=""):
 
