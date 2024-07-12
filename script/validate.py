@@ -41,7 +41,7 @@ class Activity():
                 
         except Exception as e:    
             test_object.update_result(-1,expected_result,"Internal Server error","Please check with Admin","")
-            test_object.eval_message["testcase_check_cloud_run_service_name"]=str(e)                
+            test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})             
 
     def testcase_check_BigQuery_Table_Name(self,test_object,credentials,project_id):
         testcase_description="Check Bigquery Table name"
