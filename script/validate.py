@@ -28,14 +28,15 @@ class Activity():
             except Exception as e:
                 is_present = False
                 error=str(e)
-                test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})
+                
             
             test_object.update_pre_result(testcase_description,expected_result)
             if is_present==True:
                 test_object.update_result(1,expected_result,actual,"Congrats! You have done it right!"," ") 
             else:
+                test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})
                 return test_object.update_result(0,expected_result,actual,"Check BigQuery Dataset name","https://cloud.google.com/bigquery/docs/datasets-intro")   
-
+                
         except Exception as e:    
             test_object.update_result(-1,expected_result,"Internal Server error","Please check with Admin","")
             test_object.eval_message["testcase_check_cloud_run_service_name"]=str(e)                
