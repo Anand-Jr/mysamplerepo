@@ -16,6 +16,7 @@ class Activity():
         try:
             is_present = False
             actual = 'BigQuery dataset name is not '+ expected_result
+            error =None
             try:
                 client = bigquery.Client(credentials= credentials,project=project_id)
                 datasets = list(client.list_datasets())
@@ -34,7 +35,8 @@ class Activity():
             if is_present==True:
                 test_object.update_result(1,expected_result,actual,"Congrats! You have done it right!"," ") 
             else:
-                test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})
+                if error != None:
+                    test_object.update_eval_message({"testcase_check_BigQuery_Dataset_Name":error})
                 return test_object.update_result(0,expected_result,actual,"Check BigQuery Dataset name","https://cloud.google.com/bigquery/docs/datasets-intro")   
                 
         except Exception as e:    
